@@ -1,3 +1,4 @@
+
 # todo_app
 
 ## Project setup
@@ -22,3 +23,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+# Todo App
+
+A To Do List application using Vue (w/o backend)
+
