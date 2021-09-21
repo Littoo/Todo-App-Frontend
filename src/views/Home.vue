@@ -24,25 +24,26 @@ export default {
   },
   methods: {
     delTodo(id){
-      axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      axios.delete(`http://127.0.0.1:8000/todos/${id}/`)
         .then(this.todos = this.todos.filter(todo => todo.id !== id) )
         .catch( err => console.log(err));
 
     },
+
     addTodo(newTodo){
       const { title, completed } = newTodo;
 
-      axios.post('https://jsonplaceholder.typicode.com/todos', {
+      axios.post('http://127.0.0.1:8000/todos/', {
         title, 
         completed
-      }).then(res => this.todos = [ ...this.todos, res.data])
+      }).then(res => this.todos = [ ...this.todos, res.data.new_data])
         .catch( err => console.log(err));
       
     }
   },
   created(){
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then(res => this.todos = res.data)
+    axios.get('http://127.0.0.1:8000/todos/')
+      .then(res => this.todos = res.data.dataset)
       .catch(err => console.log(err));
   }
 }

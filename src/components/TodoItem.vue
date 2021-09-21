@@ -1,7 +1,7 @@
 <template>
     <div class="todo-item" v-bind:class="{'is-complete':todo.completed}">
         <p>
-            <input type="checkbox" v-on:change="markComplete">
+            <input type="checkbox" v-on:change="markComplete(todo.id)" v-model="todo.completed">
             {{todo.title}}
             <button @click="$emit('del-todo', todo.id)" class="del">X</button>
             
@@ -10,12 +10,17 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "TodoItem",
     props: ["todo"],
     methods: {
-        markComplete(){
+        markComplete(id){
             this.todo.completed = !this.todo.completed;
+            axios.patch(`http://127.0.0.1:8000/todos/${id}/`)
+            .then()
+            .catch( err => console.log(err));
         }
     }
 }
