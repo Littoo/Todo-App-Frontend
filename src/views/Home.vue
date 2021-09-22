@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     delTodo(id){
-      axios.delete(`http://127.0.0.1:8000/todos/${id}/`)
+      axios.delete(`https://zerefics.pythonanywhere.com/todos/${id}/`)
         .then(this.todos = this.todos.filter(todo => todo.id !== id) )
         .catch( err => console.log(err));
 
@@ -33,7 +33,7 @@ export default {
     addTodo(newTodo){
       const { title, completed } = newTodo;
 
-      axios.post('http://127.0.0.1:8000/todos/', {
+      axios.post('https://zerefics.pythonanywhere.com/todos/', {
         title, 
         completed
       }).then(res => this.todos = [ ...this.todos, res.data.new_data])
@@ -42,7 +42,7 @@ export default {
     }
   },
   created(){
-    axios.get('http://127.0.0.1:8000/todos/')
+    axios.get('https://zerefics.pythonanywhere.com/todos/')
       .then(res => this.todos = res.data.dataset)
       .catch(err => console.log(err));
   }

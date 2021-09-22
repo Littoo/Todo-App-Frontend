@@ -18,7 +18,7 @@ export default {
     methods: {
         markComplete(id){
             this.todo.completed = !this.todo.completed;
-            axios.patch(`http://127.0.0.1:8000/todos/${id}/`)
+            axios.patch(`https://zerefics.pythonanywhere.com/todos/${id}/`)
             .then(res => this.todo = res.data.value)
             .catch( err => console.log(err));
         }
